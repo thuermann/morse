@@ -1,5 +1,5 @@
 /*
- * $Id: morse.c,v 1.1 1999/01/19 09:01:22 urs Exp $
+ * $Id: morse.c,v 1.2 2001/01/04 08:50:18 urs Exp $
  */
 
 #include <stdio.h>
@@ -27,7 +27,11 @@ int main(int argc, char **argv)
     return 0;
 }
 
-char mtab[] = "  etinamsdrgukwohblzfcp vx q yj";
+/*             0123456789abcdef0123456789abcdef */
+char mtab[] = "  etinamsdrgukwohblzfcp vx q yj "
+	      "56 7   8       94       3   2 10"
+	      "            ?                   "
+	      "          .        ,            ";
 
 void code(char *s)
 {
