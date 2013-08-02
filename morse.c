@@ -1,5 +1,5 @@
 /*
- * $Id: morse.c,v 1.4 2013/08/02 11:21:53 urs Exp $
+ * $Id: morse.c,v 1.5 2013/08/02 11:22:03 urs Exp $
  */
 
 #include <stdio.h>
@@ -93,19 +93,19 @@ static void decode(const char *s)
     int q = 0, bit = 1;
     char c;
 
-    while (c = *s++) {
+    do {
+	c = *s++;
 	if (c == '.')
 	    bit <<= 1;
 	else if (c == '-') {
 	    q |= bit;
 	    bit <<= 1;
-	} else if (c == ' ') {
+	} else if (c == ' ' || c == 0) {
 	    q |= bit;
-	    putchar(mtab[q]);
+	    if (q < sizeof(mtab) && mtab[q])
+		putchar(mtab[q]);
 	    q = 0;
 	    bit = 1;
 	}
-    }
-    q |= bit;
-    putchar(mtab[q]);
+    } while (c);
 }
