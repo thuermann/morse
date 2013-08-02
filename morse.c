@@ -1,13 +1,13 @@
 /*
- * $Id: morse.c,v 1.2 2001/01/04 08:50:18 urs Exp $
+ * $Id: morse.c,v 1.3 2013/08/02 11:21:46 urs Exp $
  */
 
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
-void code(char *s);
-void decode(char *s);
+static void encode(const char *s);
+static void decode(const char *s);
 
 int main(int argc, char **argv)
 {
@@ -21,19 +21,19 @@ int main(int argc, char **argv)
 	if (decode_flag)
 	    decode(*argv);
 	else
-	    code(*argv);
+	    encode(*argv);
     putchar('\n');
 
     return 0;
 }
 
-/*             0123456789abcdef0123456789abcdef */
-char mtab[] = "  etinamsdrgukwohblzfcp vx q yj "
-	      "56 7   8       94       3   2 10"
-	      "            ?                   "
-	      "          .        ,            ";
+/*                          0123456789abcdef0123456789abcdef */
+static const char mtab[] = "  etinamsdrgukwohblzfcp vx q yj "
+			   "56 7   8       94       3   2 10"
+			   "            ?                   "
+			   "          .        ,            ";
 
-void code(char *s)
+static void encode(const char *s)
 {
     char c, *p;
     int q;
@@ -47,7 +47,7 @@ void code(char *s)
     }
 }
 
-void decode(char *s)
+static void decode(const char *s)
 {
     int q = 0, bit = 1;
     char c;
