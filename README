@@ -1,1 +1,7 @@
-A simple command line encoder/decoder for the Morse code.
+A simple command-line encoder/decoder for the Morse code.
+
+This code is also a nice compiler test since it uses the C preprocessor
+to generate quite large and deeply nested constant expressions using
+stringification, concatenation, and bit operations which the compiler
+computes to an integer constant which is then used as an index in
+an array initialization.
