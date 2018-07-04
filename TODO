@@ -1,0 +1,3 @@
+[ ] Read from files instead of directly from argv[].
+[ ] Allow empty files list or - for stdin.
+[ ] Add usage message.
